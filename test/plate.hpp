@@ -14,8 +14,8 @@ int test_plate_locate() {
   const string file = "resources/image/test.jpg";
 
   cv::Mat src = imread(file);
-  
-  //TODO：原plateLocate需要被替换
+
+  //TODO锛氬師plateLocate闇�瑕佽鏇挎崲
 
   vector<cv::Mat> resultVec;
   CPlateLocate plate;
@@ -41,10 +41,10 @@ int test_plate_judge() {
 
   cv::Mat src = imread("resources/image/plate_judge.jpg");
 
-  //可能是车牌的图块集合
+  //鍙兘鏄溅鐗岀殑鍥惧潡闆嗗悎
   vector<cv::Mat> matVec;
 
-  //经过SVM判断后得到的图块集合
+  //缁忚繃SVM鍒ゆ柇鍚庡緱鍒扮殑鍥惧潡闆嗗悎
   vector<cv::Mat> resultVec;
 
   CPlateLocate lo;
@@ -121,8 +121,9 @@ int test_plate_recognize() {
   pr.setDebug(true);
 
   vector<string> plateVec;
+  vector<easypr::CPlate> plates;
 
-  int result = pr.plateRecognize(src, plateVec);
+  int result = pr.plateRecognize(src, plateVec, plates);
   if (result == 0) {
     size_t num = plateVec.size();
     for (size_t j = 0; j < num; j++) {

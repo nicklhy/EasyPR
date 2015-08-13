@@ -11,7 +11,7 @@ if(COMPILER_SUPPORTS_CXX11)
 elseif(COMPILER_SUPPORTS_CXX0X)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 else()
-    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} doesn’t support C++11. Please upgrade or use a different C++ compiler.")
+    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} doesn鈥檛 support C++11. Please upgrade or use a different C++ compiler.")
 endif()
 
 # opencv package required
@@ -39,8 +39,12 @@ set(SOURCE_FILES
     src/util/program_options.cpp
 )
 add_library(easypr STATIC ${SOURCE_FILES})
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 # test cases
 add_executable(easypr_test test/main.cpp)
-
 target_link_libraries(easypr_test ${OpenCV_LIBS} easypr)
+
+add_executable(recognize test/recognize.cpp)
+target_link_libraries(recognize ${OpenCV_LIBS} easypr)
+

@@ -55,7 +55,8 @@ static std::vector<std::string> plate_recognize(const char* image,
   pr.setDebug(false);
 
   std::vector<std::string> results;
-  pr.plateRecognize(img, results);
+  std::vector<easypr::CPlate> plates;
+  pr.plateRecognize(img, results, plates);
 
   return std::move(results);
 }
